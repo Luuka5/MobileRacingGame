@@ -27,45 +27,16 @@ public class UI {
                 if (x < this.x || x > this.x + this.w || y < this.y || y > this.y + this.h) return false;
                 dist.pos = true;
                 track.pause = false;
-                //shop.pos = false;
-                //settings.pos = false;
-                //stats.pos = false;
                 this.pos = false;
                 return true;
             }
         };
-        /*
-        shop = new Button("Shop", 50,  (int) Game.height -100, 50, (int) Game.height +500, false, 220, 100, Color.BLACK) {
-            @Override
-            public boolean touch(float x, float y, Track track) {
-                if (outside(x, y)) return false;
-                return true;
-            }
-        };
-        settings = new Button("Settings", 350,  (int) Game.height -100, 350, (int) Game.height +500, false, 300, 100, Color.BLACK) {
-            @Override
-            public boolean touch(float x, float y, Track track) {
-                if (outside(x, y)) return false;
-                return true;
-            }
-        };
-        stats = new Button("Stats", 750,  (int) Game.height -100, 700, (int) Game.height +500, false, 200, 100, Color.BLACK) {
-            @Override
-            public boolean touch(float x, float y, Track track) {
-                if (outside(x, y)) return false;
-                return true;
-            }
-        };
-        */
         menu = new Button("End run", 350,  (int) (Game.height *0.7f) +75, 1050, (int) (Game.height *0.7f) +100, false, 300, 100, Color.BLACK) {
             @Override
             public boolean touch(float x, float y, Track track) {
                 if (outside(x, y)) return false;
                 track.pause = true;
                 track.newGame();
-                //shop.pos = true;
-                //settings.pos = true;
-                //stats.pos = true;
                 play.pos = true;
                 dist.pos = false;
                 File.save();
@@ -102,18 +73,12 @@ public class UI {
         message = new Text("message", 100, 100, 100, -300, false, 800, 100, Color.BLACK);
 
         play.pos = true;
-        //settings.pos = true;
-        //shop.pos = true;
-        //stats.pos = true;
 
         elements.add(dist);
         elements.add(dist2);
         elements.add(coins);
         elements.add(gems);
         elements.add(menu);
-        //elements.add(shop);
-        //elements.add(settings);
-        //elements.add(stats);
         elements.add(play);
         elements.add(con);
         elements.add(message);
@@ -123,6 +88,7 @@ public class UI {
         coins.setText(File.getInt("coins") +"$");
         gems.setText(File.getInt("gems") +" Gems");
         dist.setText(track.getDist() +"m");
+        dist2.setText(track.getDist() +"m");
 
         menu.pos = track.gameOver != -1;
         dist2.pos = track.gameOver != -1;
